@@ -6,9 +6,22 @@
 const mongoDb = require('../../db/mongodb');
 
 // add functionality
-saveGenres = genres => {
-  mongoDb.saveGenres(genres);
-  console.log('Genres saved to the database');
+saveFaves = movie => {
+  mongoDb.saveMovies(movie);
+  console.log('Movie saved to the database');
 };
 
-module.exports.saveGenres = saveGenres;
+deleteFaves = movie => {
+  mongoDb.removeMovies(movie);
+  console.log('Movie removed from the database');
+};
+
+getFaves = () => {
+  return mongoDb.getFaves();
+};
+
+module.exports = {
+  saveFaves,
+  deleteFaves,
+  getFaves
+};

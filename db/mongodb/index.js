@@ -30,60 +30,37 @@ const genreSchema = mongoose.Schema({
 const Movie = mongoose.model('Movie', movieSchema);
 const Genre = mongoose.model('Genre', genreSchema);
 
-var saveGenres = genres => {
-  let promisedGenres = genres.map(genre => {
-    // return an array of promises
-    return Genre.findOneAndUpdate(
-      { id: genre.id },
-      {
-        id: genre.id,
-        name: genre.name
-      },
-      { upsert: true }
-    ).exec();
-  });
-
-  Promise.all(promisedGenres).then(data => {
-    console.log('Movies saved with >>>>>>', data);
-    return data;
-  });
-};
 // save entries
-var saveMovies = movies => {
-  let promisedMovies = movies.map(movie => {
-    // return an array of promises
-    return Movie.findOneAndUpdate(
-      { id: movie.id },
-      {
-        id: movie.id,
-        original_title: movie.original_title,
-        genres: movie.genres,
-        vote_average: movie.vote_average,
-        release_date: movie.release_date,
-        poster_path: movie.poster_path
-      },
-      { upsert: true }
-    ).exec();
-  });
-
-  Promise.all(promisedMovies).then(data => {
+var saveMovies = movie => {
+  // return an array of promises
+  return Movie.findOneAndUpdate(
+    { id: movie.id },
+    {
+      id: movie.id,
+      original_title: movie.original_title,
+      genres: movie.genres,
+      vote_average: movie.vote_average,
+      release_date: movie.release_date,
+      poster_path: movie.poster_path
+    },
+    { upsert: true }
+  ).exec(data => {
     console.log('Movies saved with >>>>>>', data);
     return data;
   });
 };
-// save genres
 
-// save favorites
+var getFaves = () => {
+  return Movie.find({});
+};
 
 // get favorites
 
 // deletes an entry from favorites
-
+var removeMovies = movie => {
+  Movie.findOneAndDelete({ id: movie.id }).exec();
+};
 // retrieve entries
-
-// get movies by genre
-
-// get movies by worst rating
 
 mongoose.Promise = Promise;
 db.on('error', console.error.bind(console, 'Connection error:'));
@@ -91,6 +68,9 @@ db.once('open', () => {
   console.log('Connected to db...');
 });
 
-module.exports.db = db;
-module.exports.saveGenres = saveGenres;
-module.exports.saveMovies = saveMovies;
+module.exports = {
+  db,
+  saveMovies,
+  removeMovies,
+  getFaves
+};

@@ -14,24 +14,21 @@ class Movies extends React.Component {
   render() {
     return (
       <ul className="movies">
-
-        {/* {this.props.movies.map( movie => {
-          console.log(movie)
-          if (movie.genre_ids.includes(this.props.currentGenre))
+        {this.props.genreMovies.map( movie => {
           {
             return (
-              <li className="movie_item">
-              <img src="https://lh3.googleusercontent.com/97gnjRiv2zIRnDupzfxYFoI-6zlIK3jKgb6KOCDf_tjWkY9epbITdSFIbiKhuccOqQ=w300" />
+              <li onClick={this.props.handleClick} id={movie.id} key={movie.id} className="movie_item">
+              <img src= {`http://image.tmdb.org/t/p/w185/${movie.poster_path}`} />
               <div className="movie_description">
                 <h2>{movie.title}</h2>
                 <section className="movie_details">
                   <div className="movie_year">
                     <span className="title">Year</span>
-                    <span>2018</span>
+                    <span>{movie.release_date.split('-')[0]}</span>
                   </div>
                   <div className="movie_rating">
                     <span className="title">Rating</span>
-                    <span>10.0</span>
+                    <span>{movie.vote_average}</span>
                   </div>
                 </section>
               </div>
@@ -39,123 +36,7 @@ class Movies extends React.Component {
           
             )
           }
-        })} */}
-
-
-
-      
-        <li className="movie_item">
-          <img src="https://lh3.googleusercontent.com/97gnjRiv2zIRnDupzfxYFoI-6zlIK3jKgb6KOCDf_tjWkY9epbITdSFIbiKhuccOqQ=w300" />
-          <div className="movie_description">
-            <h2>De Wae</h2>
-            <section className="movie_details">
-              <div className="movie_year">
-                <span className="title">Year</span>
-                <span>2018</span>
-              </div>
-              <div className="movie_rating">
-                <span className="title">Rating</span>
-                <span>10.0</span>
-              </div>
-            </section>
-          </div>
-        </li>
-        <li className="movie_item">
-          <img src="https://lh3.googleusercontent.com/97gnjRiv2zIRnDupzfxYFoI-6zlIK3jKgb6KOCDf_tjWkY9epbITdSFIbiKhuccOqQ=w300" />
-          <div className="movie_description">
-            <h2>De Wae</h2>
-            <section className="movie_details">
-              <div className="movie_year">
-                <span className="title">Year</span>
-                <span>2018</span>
-              </div>
-              <div className="movie_rating">
-                <span className="title">Rating</span>
-                <span>10.0</span>
-              </div>
-            </section>
-          </div>
-        </li>
-        <li className="movie_item">
-          <img src="https://lh3.googleusercontent.com/97gnjRiv2zIRnDupzfxYFoI-6zlIK3jKgb6KOCDf_tjWkY9epbITdSFIbiKhuccOqQ=w300" />
-          <div className="movie_description">
-            <h2>De Wae</h2>
-            <section className="movie_details">
-              <div className="movie_year">
-                <span className="title">Year</span>
-                <span>2018</span>
-              </div>
-              <div className="movie_rating">
-                <span className="title">Rating</span>
-                <span>10.0</span>
-              </div>
-            </section>
-          </div>
-        </li>
-        <li className="movie_item">
-          <img src="https://lh3.googleusercontent.com/97gnjRiv2zIRnDupzfxYFoI-6zlIK3jKgb6KOCDf_tjWkY9epbITdSFIbiKhuccOqQ=w300" />
-          <div className="movie_description">
-            <h2>De Wae</h2>
-            <section className="movie_details">
-              <div className="movie_year">
-                <span className="title">Year</span>
-                <span>2018</span>
-              </div>
-              <div className="movie_rating">
-                <span className="title">Rating</span>
-                <span>10.0</span>
-              </div>
-            </section>
-          </div>
-        </li>
-        <li className="movie_item">
-          <img src="https://lh3.googleusercontent.com/97gnjRiv2zIRnDupzfxYFoI-6zlIK3jKgb6KOCDf_tjWkY9epbITdSFIbiKhuccOqQ=w300" />
-          <div className="movie_description">
-            <h2>De Wae</h2>
-            <section className="movie_details">
-              <div className="movie_year">
-                <span className="title">Year</span>
-                <span>2018</span>
-              </div>
-              <div className="movie_rating">
-                <span className="title">Rating</span>
-                <span>10.0</span>
-              </div>
-            </section>
-          </div>
-        </li>
-        <li className="movie_item">
-          <img src="https://lh3.googleusercontent.com/97gnjRiv2zIRnDupzfxYFoI-6zlIK3jKgb6KOCDf_tjWkY9epbITdSFIbiKhuccOqQ=w300" />
-          <div className="movie_description">
-            <h2>De Wae</h2>
-            <section className="movie_details">
-              <div className="movie_year">
-                <span className="title">Year</span>
-                <span>2018</span>
-              </div>
-              <div className="movie_rating">
-                <span className="title">Rating</span>
-                <span>10.0</span>
-              </div>
-            </section>
-          </div>
-        </li>
-        <li className="movie_item">
-          <img src="https://lh3.googleusercontent.com/97gnjRiv2zIRnDupzfxYFoI-6zlIK3jKgb6KOCDf_tjWkY9epbITdSFIbiKhuccOqQ=w300" />
-          <div className="movie_description">
-            <h2>De Wae</h2>
-            <section className="movie_details">
-              <div className="movie_year">
-                <span className="title">Year</span>
-                <span>2018</span>
-              </div>
-              <div className="movie_rating">
-                <span className="title">Rating</span>
-                <span>10.0</span>
-              </div>
-            </section>
-          </div>
-        </li>
+        })}
 
       </ul>
     );

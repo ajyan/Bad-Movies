@@ -25,12 +25,10 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search">
-        <button onClick={() => {this.props.swapFavorites()}}>{this.props.showFaves ? "Show Results" : "Show Favorites"}</button>
+        <button onClick={this.props.swapFavorites}>{this.props.showFaves ? "Show Results" : "Show Favorites"}</button>
         <br/><br/>
 
-        {/* How can you tell which option has been selected from here? */}
-
-        <select value={this.state.value} onChange={this.props.handleChange}>
+        <select onChange={this.props.handleChange}>
           {this.state.genres.map( (genre) => {
             return <option key={genre.id} value={genre.id}>{genre.name}</option>
           })}
